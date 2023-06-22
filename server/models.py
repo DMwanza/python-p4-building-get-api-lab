@@ -14,8 +14,10 @@ class Bakery(db.Model, SerializerMixin):
     serialize_rules=('-baked_goods.bakeries')
     id = db.Column(db.Integer, primary_key=True)
     name=db.Column(db.String,unique=True)
+    # created_at=db.Column(db.DateTime,server_default=db.func.now())
+    # updated_at=db.Column(db.DateTime,onupdate=db.func.now())
+    
     baked_goods=db.relationship('BakedGood',backref='bakeries')
-
 
     def __repr__(self):
         return f'<Bakery {self.name} >'
